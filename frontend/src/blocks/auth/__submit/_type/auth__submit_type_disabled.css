@@ -1,0 +1,6 @@
+.auth__submit_type_disabled {
+  background-color: #000;
+  color: rgba(255, 255, 255, 0.2);
+  cursor: default;
+  outline: 1px solid rgba(255, 255, 255, 0.2);
+}

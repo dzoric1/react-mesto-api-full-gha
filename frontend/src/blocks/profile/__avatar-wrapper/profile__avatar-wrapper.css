@@ -1,0 +1,33 @@
+.profile__avatar-wrapper {
+  position: relative;
+  margin-right: 30px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.profile__avatar-wrapper::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-13px, -13px);
+  width: 26px;
+  height: 26px;
+  background: url("../../../assets/images/edit.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.profile__avatar-wrapper:hover::before {
+  opacity: 1;
+}
+
+@media screen and (max-width: 767px) {
+  .profile__avatar-wrapper {
+    margin: 0 0 22px 0;
+  }
+}

@@ -1,0 +1,20 @@
+.gallery__cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px 17px;
+}
+
+@media screen and (max-width: 860px) {
+  .gallery__cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .gallery__cards {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

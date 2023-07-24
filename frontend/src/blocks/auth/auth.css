@@ -1,0 +1,15 @@
+.auth {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  max-width: calc(358px + 20px);
+  margin: 0 auto;
+  padding: 60px 10px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 767px) {
+  .auth {
+    padding: 40px 10px;
+  }
+}

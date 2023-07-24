@@ -1,0 +1,12 @@
+.header__burger-bar_type_close {
+  transform: rotate(45deg);
+}
+
+.header__burger-bar_type_close::after {
+  opacity: 0;
+}
+
+.header__burger-bar_type_close::before {
+  transform: rotate(90deg);
+  top: 0;
+}

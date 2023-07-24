@@ -1,0 +1,28 @@
+.popup__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 42px;
+  height: 42px;
+  transform: translate(42px, -42px) rotate(45deg);
+  background: linear-gradient(#fff, #fff), linear-gradient(#fff, #fff), transparent;
+  background-position: center;
+  background-size: 100% 4px, 4px 100%;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  border: none;
+  transition: opacity 0.3s ease;
+}
+
+.popup__close:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 767px) {
+  .popup__close {
+    width: 26px;
+    height: 26px;
+    background-size: 100% 3px, 3px 100%;
+    transform: translate(4px, -39px) rotate(45deg);
+  }
+}

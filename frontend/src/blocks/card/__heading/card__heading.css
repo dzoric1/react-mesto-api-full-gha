@@ -1,0 +1,6 @@
+.card__heading {
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 22px 20px;
+}
