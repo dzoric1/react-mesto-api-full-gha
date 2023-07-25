@@ -6,6 +6,7 @@ import rateLimit from 'express-rate-limit';
 import { errors } from 'celebrate';
 import auth from './middlewares/auth.js';
 import errorMiddleware from './middlewares/error.js';
+import { corsMiddleware } from './middlewares/cors.js';
 import userRouter from './routes/users.js';
 import cardRouter from './routes/cards.js';
 import NotFoundError from './utils/errors/NotFoundError.js';
@@ -32,6 +33,7 @@ app.use(limiter);
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 
 app.use(requestLogger);
+app.use(corsMiddleware);
 
 app.post('/signin', validateLogin, login);
 app.post('/signup', validateRegister, createUser);
