@@ -6,8 +6,8 @@ const limiterSettings = {
 };
 
 const allowedCors = [
-  'http://mesto.dzoric1.nomoredomains.xyz/',
-  'https://mesto.dzoric1.nomoredomains.xyz/',
+  'http://mesto.dzoric1.nomoredomains.xyz',
+  'https://mesto.dzoric1.nomoredomains.xyz',
   'http://localhost:3000',
 ];
 
