@@ -11,6 +11,7 @@ import cardRouter from './routes/cards.js';
 import NotFoundError from './utils/errors/NotFoundError.js';
 import { limiterSettings } from './utils/variables.js';
 import { PORT } from './env.config.js';
+import { requestLogger, errorLogger } from './middlewares/logger.js';
 import {
   login,
   createUser,
@@ -30,10 +31,15 @@ app.use(limiter);
 
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 
+app.use(requestLogger);
+
 app.post('/signin', validateLogin, login);
 app.post('/signup', validateRegister, createUser);
 app.use('/users', auth, userRouter);
 app.use('/cards', auth, cardRouter);
+
+app.use(errorLogger);
+
 app.use('*', () => {
   throw new NotFoundError('Запрашиваемый URL не найден');
 });
