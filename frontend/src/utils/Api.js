@@ -13,7 +13,7 @@ class Api {
 
       res = await fetch(url, {
         method,
-        headers: this._headers,
+        headers: { ...this._headers, authorization: `Bearer ${localStorage.getItem('token')}` },
         body: JSON.stringify(data)
       });
 
@@ -21,7 +21,7 @@ class Api {
 
       res = await fetch(url, {
         method,
-        headers: this._headers,
+        headers: { ...this._headers, authorization: `Bearer ${localStorage.getItem('token')}` },
       });
 
     }

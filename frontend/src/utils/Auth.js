@@ -12,7 +12,10 @@ class Auth {
     if (data) {
       res = await fetch(url, {
         method,
-        headers: this._headers,
+        headers: {
+          ...this._headers,
+          authorization: `Bearer ${token}`
+        },
         body: JSON.stringify(data)
       });
     } else {
@@ -20,7 +23,7 @@ class Auth {
         method,
         headers: {
           ...this._headers,
-          'Authorization': `Bearer ${token}`
+          authorization: `Bearer ${token}`
         },
       });
     }
