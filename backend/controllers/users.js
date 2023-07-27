@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions */
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { JWT_SECRET_KEY } from '../env.config.js';
+import { JWT_SECRET_KEY, NODE_ENV } from '../env.config.js';
 import User from '../models/user.js';
 import BadRequestError from '../utils/errors/BadRequestError.js';
 import NotFoundError from '../utils/errors/NotFoundError.js';
@@ -79,7 +79,11 @@ const login = (req, res, next) => {
   const { email, password } = req.body;
   return User.findUserByCredentials(email, password)
     .then((user) => {
-      const token = jwt.sign({ _id: user._id }, JWT_SECRET_KEY, { expiresIn: '7d' });
+      const token = jwt.sign(
+        { _id: user._id },
+        NODE_ENV === 'development' ? 'secret-key' : JWT_SECRET_KEY,
+        { expiresIn: '7d' },
+      );
       res.send({ token });
     })
     .catch((error) => {
