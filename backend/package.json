@@ -13,7 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/dzoric1/express-mesto-gha.git"
   },
-  "author": "",
+  "author": "https://github.com/dzoric1",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/dzoric1/express-mesto-gha/issues"

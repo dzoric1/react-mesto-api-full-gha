@@ -32,10 +32,6 @@ const deleteCard = (req, res, next) => {
       throw new NotFoundError('Карточка не найдена');
     })
     .then((card) => {
-      if (!card) {
-        throw new NotFoundError('Карточка не найдена');
-      }
-
       if (card.owner.toString() !== req.user._id) {
         throw new ForbiddenError('Удалять можно только свои карточки!');
       }
@@ -44,15 +40,15 @@ const deleteCard = (req, res, next) => {
         .then(() => {
           res.send({ message: 'Карточка удалена' });
         })
-        .catch((error) => {
-          if (error.name === 'CastError') {
-            next(new BadRequestError('Переданные данные не валидны'));
-          } else {
-            next(error);
-          }
-        });
+        .catch((error) => next(error));
     })
-    .catch((error) => next(error));
+    .catch((error) => {
+      if (error.name === 'CastError') {
+        next(new BadRequestError('Переданные данные не валидны'));
+      } else {
+        next(error);
+      }
+    });
 };
 
 const handleCardLike = (req, res, next, options) => {

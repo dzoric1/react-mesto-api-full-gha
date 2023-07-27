@@ -39,12 +39,12 @@ app.post('/signin', validateLogin, login);
 app.post('/signup', validateRegister, createUser);
 app.use('/users', auth, userRouter);
 app.use('/cards', auth, cardRouter);
+app.use('*', auth, (req, res, next) => {
+  next(new NotFoundError('Запрашиваемый URL не найден'));
+});
 
 app.use(errorLogger);
 
-app.use('*', () => {
-  throw new NotFoundError('Запрашиваемый URL не найден');
-});
 app.use(errors());
 app.use(errorMiddleware);
 
